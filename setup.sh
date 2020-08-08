@@ -1,3 +1,5 @@
+export DATABASE_URL=postgres://vwkkxkmciusfvc:7352457377985539cd42070dbf094c6259b01d68c41c0e6a5d2f21e4d8fc050e@ec2-50-16-198-4.compute-1.amazonaws.com:5432/d22en9bs75ts1b
+
 export AUTH0_DOMAIN='ibrahimalsaif.us.auth0.com'
 export ALGORITHMS=['RS256']
 export API_AUDIENCE='Casting Agency'
