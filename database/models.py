@@ -5,7 +5,7 @@ import json
 
 # database_name = "casting_agency"
 # database_path = "postgres://{}/{}".format('postgres:7654321@localhost:5432', database_name)
-database_path = os.environ['DATABASE_URL']
+database_path = 'postgres://mwjxfvhswjswiq:101cb5ee2105d04ef7d0eeaab2df3e102ef4e1cd4b4c41a83dfafcd762a469fe@ec2-18-211-48-247.compute-1.amazonaws.com:5432/d84hgmgql40khq'
 
 db = SQLAlchemy()
 
