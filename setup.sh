@@ -1,4 +1,4 @@
-export DATABASE_URL=postgres://vwkkxkmciusfvc:7352457377985539cd42070dbf094c6259b01d68c41c0e6a5d2f21e4d8fc050e@ec2-50-16-198-4.compute-1.amazonaws.com:5432/d22en9bs75ts1b
+export DATABASE_URL=postgres://mwjxfvhswjswiq:101cb5ee2105d04ef7d0eeaab2df3e102ef4e1cd4b4c41a83dfafcd762a469fe@ec2-18-211-48-247.compute-1.amazonaws.com:5432/d84hgmgql40khq
 
 export AUTH0_DOMAIN='ibrahimalsaif.us.auth0.com'
 export ALGORITHMS=['RS256']
