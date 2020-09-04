@@ -7,6 +7,7 @@ import random
 from database.models import setup_db, Movies, Actors
 from auth.auth import AuthError, requires_auth
 
+
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_db(app)
@@ -48,9 +49,9 @@ def create_app(test_config=None):
 
     @app.route('/actors/<int:actor_id>', methods=['DELETE'])
     @requires_auth('delete:actor')
-    def delete_actor(token,actor_id):
+    def delete_actor(token, actor_id):
         try:
-            actor = Actors.query.filter(Actors.id==actor_id).one_or_none()
+            actor = Actors.query.filter(Actors.id == actor_id).one_or_none()
 
             if not actor:
                 abort(404)
@@ -67,9 +68,9 @@ def create_app(test_config=None):
 
     @app.route('/movies/<int:movie_id>', methods=['DELETE'])
     @requires_auth('delete:movie')
-    def delete_movie(token,movie_id):
+    def delete_movie(token, movie_id):
         try:
-            movie = Movies.query.filter(Movies.id==movie_id).one_or_none()
+            movie = Movies.query.filter(Movies.id == movie_id).one_or_none()
 
             if not movie:
                 abort(404)
@@ -123,15 +124,15 @@ def create_app(test_config=None):
 
     @app.route('/actors/<int:actor_id>', methods=['PATCH'])
     @requires_auth('patch:actor')
-    def edit_actor(token,actor_id):
+    def edit_actor(token, actor_id):
         data = request.get_json()
-        
+
         name = data.get('name', None)
         age = data.get('age', None)
         gender = data.get('gender', None)
 
         try:
-            actor = Actors.query.filter(Actors.id==actor_id).one_or_none()
+            actor = Actors.query.filter(Actors.id == actor_id).one_or_none()
 
             if not actor:
                 abort(404)
@@ -141,30 +142,30 @@ def create_app(test_config=None):
 
             if age:
                 actor.age = age
-            
+
             if gender:
                 actor.gender = gender
 
             actor.update()
 
             return jsonify({
-               'success': True,
-               'edited_actor_id': actor_id
-             })
+                'success': True,
+                'edited_actor_id': actor_id
+            })
 
         except:
             abort(422)
-    
+
     @app.route('/movies/<int:movie_id>', methods=['PATCH'])
     @requires_auth('patch:movie')
-    def edit_movie(token,movie_id):
+    def edit_movie(token, movie_id):
         data = request.get_json()
-        
+
         title = data.get('title', None)
         release_date = data.get('release_date', None)
 
         try:
-            moive = Movies.query.filter(Movies.id==movie_id).one_or_none()
+            moive = Movies.query.filter(Movies.id == movie_id).one_or_none()
 
             if not moive:
                 abort(404)
@@ -178,9 +179,9 @@ def create_app(test_config=None):
             moive.update()
 
             return jsonify({
-               'success': True,
-               'edited_moive_id': movie_id
-             })
+                'success': True,
+                'edited_moive_id': movie_id
+            })
 
         except:
             abort(422)
@@ -200,7 +201,7 @@ def create_app(test_config=None):
             "error": 422,
             "message": "unprocessable"
         }), 422
-    
+
     @app.errorhandler(AuthError)
     def not_found(error):
         return jsonify({
@@ -208,8 +209,9 @@ def create_app(test_config=None):
             "error": error.status_code,
             "message": error.error['description']
         }), error.status_code
-        
+
     return app
+
 
 app = create_app()
 
